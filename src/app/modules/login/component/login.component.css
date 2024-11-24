@@ -116,41 +116,89 @@
   font-weight: 500;
 }
 
-mat-form-field {
-  width: 100%;
-  margin-bottom: 1em;
-}
 
-.inputs-form{
-  width: 393px;
-  height: 58px;
-  margin-bottom: 3em;
-
-}
-
-.buttons-form{
-  width: 393px;
-  height: 58px;
-  display: flex;
-  justify-content: space-around;
-  align-items:center;
-  } 
-  .buttons-form button{
-    width: 164px;
-    height: 48px;
-    border: 1px solid gray;
-    border-radius: 12px;
-  }
-
-.buttons-form a{
-    font-size: 14px;
-}
 .captcha{
   width: 393px;
 }
 .captcha p{
   font-size: 12px;
+  font-weight: 400;
 } 
 .captcha a{
+  text-decoration: none;
   font-size: 12px;
+  font-weight: 400;
+  color: #33A3AA;
 }
+
+/*LOGIN*/
+mat-form-field{
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.login-right-content{
+  width: 393px;
+}
+
+.full-width input{
+  width: 393px;
+  height: 38px;
+}
+
+.full-width mat-label {
+  font-size: 20px;
+  color: #84818A;
+  text-align: center;
+}
+
+:host ::ng-deep .mdc-text-field--outlined {
+  --mdc-outlined-text-field-container-shape: 14px;
+
+}
+
+
+.buttons-form{
+  width: 393px;
+  height: 58px;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  } 
+
+  .buttons-form button{
+    width: 164px;
+    height: 48px;
+    border-radius: 12px;
+    font-family:'poppins';
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #33A3AA;
+    box-shadow: none;
+  }
+
+.buttons-form a{
+    font-size: 14px;
+    text-decoration: none;
+    color: black;
+}
+
+
+:host ::ng-deep .mdc-text-field--outlined.mdc-text-field--focused .mdc-notched-outline {
+  border-color: #84818A !important; 
+}
+
+:host ::ng-deep .mdc-text-field--outlined {
+  --mdc-outlined-text-field-hover-outline-color:#84818A !important; 
+}
+:host ::ng-deep .mdc-text-field--outlined {
+  --mdc-outlined-text-field-focus-outline-color:#84818A !important; 
+}
+:host ::ng-deep .mdc-text-field--outlined {
+  --mdc-outlined-text-field-error-focus-outline-color:#84818A !important; 
+}
+:host ::ng-deep .mdc-text-field--outlined .mdc-text-field__input {
+  caret-color: #84818A !important; /*  color del cursor */
+}
+
+

@@ -36,30 +36,36 @@
       </div>
 
 
-      <div class="form">
-      <form>
-       
-        <div class="inputs-form">
-            <mat-form-field appearance="outline">
-              <mat-label>Email</mat-label>
-              <input matInput type="email" />
-            </mat-form-field>
-          
-            <mat-form-field appearance="outline">
-              <mat-label>Contraseña</mat-label>
-              <input matInput type="password" />
-            </mat-form-field>
-       </div>
-
-       <div class="buttons-form">   
-           <a href="#">¿Olvidaste tu contraseña?</a>
-        
-           <button mat-raised-button color="primary">
-            Iniciar sesión
+      <!--FORM LOGIN-->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" />
+          <mat-error *ngIf="submitted && loginForm.get('email')?.hasError('email')">
+            Ingrese un email válido.
+          </mat-error>
+        </mat-form-field>
+      
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" />
+          <button mat-icon-button matSuffix (click)="hide = !hide">
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
           </button>
-      </div>
-
-    </form>
+          <mat-error *ngIf="submitted && loginForm.get('password')?.hasError('minlength')">
+            La contraseña debe tener al menos 8 caracteres.
+          </mat-error>
+        </mat-form-field>
+      
+          <div class="buttons-form">
+            <a href="#">¿Olvidaste tu contraseña?</a>
+           
+            <button mat-raised-button color="primary" type="submit">
+              Iniciar sesión
+           
+            </button>
+          </div>
+        </form>
 
       <div class="captcha">
         <p>Protegido por reCAPTCHA y sujeto a la 
@@ -68,8 +74,8 @@
          <a href="#">Condiciones.</a>
         </p>
       </div>
-    </div>
-</div>
+
+   </div>
 
  </div>
 
