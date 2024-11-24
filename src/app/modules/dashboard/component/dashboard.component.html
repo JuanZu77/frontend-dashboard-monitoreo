@@ -1,0 +1,108 @@
+<div class="dashboard-container">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">LOGO</div>
+    <div class="menu">
+      <mat-icon>icono1</mat-icon>
+      <mat-icon>icono2</mat-icon>
+      <mat-icon>icono3</mat-icon>
+      <mat-icon>icono4</mat-icon>
+      <mat-icon>logout</mat-icon>
+    </div>
+  </aside>
+
+  <!-- MENU VERTICAL -->
+  <main class="menu-content">
+  
+    <!-- NAVBAE -->
+    <header class="navbar">
+      <h1>Monitoreo global</h1>
+      <div class="user-info">
+        <mat-icon>settings</mat-icon>
+        <mat-icon>notifications</mat-icon>
+        <mat-icon>help</mat-icon>
+        <h4>Juan Rojas</h4>
+      </div>
+    </header>
+
+    <!-- ITEMS -->
+    <section class="totals">
+      <div class="card" *ngFor="let item of globalItems">
+        <div class="card-left">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.value }}</p>
+        </div>
+        <div class="card-right">
+          <div class="icon-circle">
+            <mat-icon>{{ item.icon }}</mat-icon>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABLA -->
+    <section class="plants-table">
+      <div class="table-header">
+        <h2>Plantas</h2>
+        <button mat-raised-button color="primary">+ Crear nueva planta</button>
+      </div>
+      <table mat-table [dataSource]="plants">
+        <!-- País -->
+        <ng-container matColumnDef="country">
+          <th mat-header-cell *matHeaderCellDef> País </th>
+          <td mat-cell *matCellDef="let plant"> {{ plant.country }} </td>
+        </ng-container>
+
+        <!-- Nombre -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Nombre de la planta </th>
+          <td mat-cell *matCellDef="let plant"> {{ plant.name }} </td>
+        </ng-container>
+
+        <!-- Lecturas -->
+        <ng-container matColumnDef="lectures">
+          <th mat-header-cell *matHeaderCellDef> Lecturas </th>
+          <td mat-cell *matCellDef="let plant"> {{ plant.lectures }} </td>
+        </ng-container>
+
+        <!-- Alertas medias -->
+        <ng-container matColumnDef="mediumAlerts">
+          <th mat-header-cell *matHeaderCellDef> Alertas medias </th>
+          <td mat-cell *matCellDef="let plant"> {{ plant.mediumAlerts }} </td>
+        </ng-container>
+
+        <!-- Alertas rojas -->
+        <ng-container matColumnDef="criticalAlerts">
+          <th mat-header-cell *matHeaderCellDef> Alertas rojas </th>
+          <td mat-cell *matCellDef="let plant"> {{ plant.criticalAlerts }} </td>
+        </ng-container>
+
+        <!-- Acciones -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Acciones </th>
+          <td mat-cell *matCellDef="let plant">
+            <mat-icon>more_vert</mat-icon>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+      </table>
+    </section>
+
+    <!-- INDICADORES-->
+    <section class="indicators">
+      <div class="indicator-card" *ngFor="let indicator of indicators">
+        <h4>{{ indicator.title }}</h4>
+        <div class="indicator-values">
+          <span class="value-ok">{{ indicator.ok }}</span>
+          <span class="value-warning">{{ indicator.warning }}</span>
+          <span class="value-critical">{{ indicator.critical }}</span>
+          <mat-icon>{{ indicator.icon }}</mat-icon>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+  
