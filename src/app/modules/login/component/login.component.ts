@@ -1,44 +1,51 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit{
- 
+export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
   hide = true;
+  errorMessage: string | null = null;
 
-  constructor() { }
- 
+  constructor(private userService: UserService, private router: Router) {}
+
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.email]), 
-      password: new FormControl('', [Validators.minLength(8)]) 
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     });
   }
 
-
   onSubmit() {
     this.submitted = true;
-    // Verificamos manualmente si los campos están vacíos
+    this.errorMessage = null;
+
     const email = this.loginForm.get('email')?.value;
     const password = this.loginForm.get('password')?.value;
 
-    // Evitar envío si alguno de los campos está vacío
-    if (!email || !password) {
-      console.log('Por favor, complete todos los campos');
-      return; // Si están vacíos, no continuamos con el envío
+    if (!email || !password || this.loginForm.invalid) {
+      console.log('Formulario inválido');
+      return;
     }
 
-    // Verificamos si el formulario es válido
-    if (this.loginForm.valid) {
-      console.log('Formulario enviado:', this.loginForm.value);
-    } else {
-      console.log('Formulario inválido');
-    }
+    // Llamamos al servicio de login
+    this.userService.login(email, password).subscribe(
+      (response) => {
+        console.log('Inicio de sesión exitoso:', response);
+        // Redirigir al dashboard
+        this.router.navigate(['/dashboard']);
+      },
+      (error) => {
+        console.error('Error en el inicio de sesión:', error);
+        this.errorMessage = 'Correo o contraseña incorrectos';
+      }
+    );
   }
 }
