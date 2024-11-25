@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      email: new FormControl('', Validators.email),
+      password: new FormControl('', Validators.minLength(8)),
     });
   }
 
@@ -35,17 +35,19 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    // Llamamos al servicio de login
-    this.userService.login(email, password).subscribe(
-      (response) => {
+    this.userService.login(email, password)
+    .subscribe({
+      next:(response:any)=>{
         console.log('Inicio de sesión exitoso:', response);
-        // Redirigir al dashboard
         this.router.navigate(['/dashboard']);
+
       },
-      (error) => {
+      error:(error:any)=>{
         console.error('Error en el inicio de sesión:', error);
         this.errorMessage = 'Correo o contraseña incorrectos';
       }
-    );
+    });
   }
+
+    
 }
