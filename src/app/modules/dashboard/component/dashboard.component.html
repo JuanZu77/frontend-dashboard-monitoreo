@@ -1,13 +1,15 @@
 <div class="dashboard-container">
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <div class="logo">LOGO</div>
+    <div class="logo">
+      <img src="assets/dashboard/Logo.png" alt="">
+    </div>
     <div class="menu">
       <mat-icon>public</mat-icon>
-      <mat-icon>videocam</mat-icon>
-      <mat-icon>sensors</mat-icon>
-      <mat-icon>check_box_outline_blank</mat-icon>
-      <mat-icon (click)="logout()">logout</mat-icon>
+      <mat-icon class="videocam-color">videocam</mat-icon>
+      <mat-icon class="videocam-color">sensors</mat-icon>
+      <mat-icon class="videocam-color">check_box_outline_blank</mat-icon>
+      <mat-icon class="videocam-color" (click)="logout()">logout</mat-icon>
     </div>
   </aside>
 
@@ -21,7 +23,7 @@
         <mat-icon>settings</mat-icon>
         <mat-icon>notifications</mat-icon>
         <mat-icon>help</mat-icon>
-        <h4>Juan Rojas</h4>
+        <h4>{{ userName }} {{ userLastName }}</h4>
       </div>
     </header>
 
@@ -46,6 +48,9 @@
         <h2>Plantas</h2>
         <button mat-raised-button color="primary">+ Crear nueva planta</button>
       </div>
+
+      <mat-divider></mat-divider>
+      
       <table mat-table [dataSource]="plants">
         <!-- País -->
         <ng-container matColumnDef="country">

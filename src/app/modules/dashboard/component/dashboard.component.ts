@@ -1,14 +1,45 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent {
-
+export class DashboardComponent implements OnInit{
+ 
   private router = inject(Router);
+  private userService = inject(UserService)
+  userName: string = '';
+  userLastName: string = '';
+
+  ngOnInit(): void {
+    this.loadUser();
+  }
+
+  loadUser(): void {
+    const userId = parseInt(localStorage.getItem('userId') || '0', 10);
+    if (userId) {
+      this.userService.getUserById(userId).subscribe({
+        next: (response) => {
+          this.userName = response?.user?.name || 'Nombre';
+          this.userLastName = response?.user?.lastName || 'Apellido';
+        },
+        error: (err) => {
+          console.error('Error cargando usuario:', err);
+          this.userName = 'Error';
+          this.userLastName = 'al cargar';
+        },
+      });
+    } else {
+      console.error('ID de usuario no encontrado');
+      this.userName = 'Usuario';
+      this.userLastName = 'desconocido';
+    }
+  }
+  
+
 
   logout(): void {
     localStorage.removeItem('token');

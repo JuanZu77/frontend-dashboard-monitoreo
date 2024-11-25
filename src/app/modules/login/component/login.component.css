@@ -90,7 +90,6 @@
   object-fit: contain; 
 }
 
-
 /*LOGIN RIGHT*/
 .login-right {
   width: 675px;
@@ -116,7 +115,6 @@
   font-weight: 500;
 }
 
-
 .captcha{
   width: 393px;
 }
@@ -134,7 +132,7 @@
 /*LOGIN*/
 mat-form-field{
   width: 100%;
-  margin-bottom: 0;
+  margin-bottom: 0.5em;
 }
 
 .login-right-content{
@@ -156,7 +154,6 @@ mat-form-field{
   --mdc-outlined-text-field-container-shape: 14px;
 
 }
-
 
 .buttons-form{
   width: 393px;
@@ -185,20 +182,44 @@ mat-form-field{
 
 
 :host ::ng-deep .mdc-text-field--outlined.mdc-text-field--focused .mdc-notched-outline {
+
   border-color: #84818A !important; 
 }
 
 :host ::ng-deep .mdc-text-field--outlined {
+  
   --mdc-outlined-text-field-hover-outline-color:#84818A !important; 
 }
 :host ::ng-deep .mdc-text-field--outlined {
   --mdc-outlined-text-field-focus-outline-color:#84818A !important; 
+  
 }
-:host ::ng-deep .mdc-text-field--outlined {
-  --mdc-outlined-text-field-error-focus-outline-color:#84818A !important; 
-}
+
 :host ::ng-deep .mdc-text-field--outlined .mdc-text-field__input {
   caret-color: #84818A !important; /*  color del cursor */
+}
+
+/*ERRORES*/
+:host ::ng-deep .mdc-text-field--outlined {
+  --mdc-outlined-text-field-error-focus-outline-color:#84818A !important; 
+  
+}
+
+:host ::ng-deep .mdc-text-field--outlined {
+  --mdc-outlined-text-field-error-hover-outline-color:#84818A !important; 
+  
+}
+
+:host ::ng-deep .mdc-text-field--outlined {
+  --mdc-outlined-text-field-error-caret-color:#84818A !important; 
+}
+
+:host ::ng-deep .mdc-text-field--outlined {
+  --mdc-outlined-text-field-error-focus-label-text-color:#84818A !important; 
+  
+}
+:host ::ng-deep .mdc-text-field--outlined {
+  --mdc-outlined-text-field-error-outline-color:#84818A !important; /*anulo border roojo*/
 }
 
 

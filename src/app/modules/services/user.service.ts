@@ -27,6 +27,13 @@ export class UserService {
         if (response.token) {
           localStorage.setItem('token', response.token);
         }
+
+        if (response.user && response.user.id) { //guardo id en localStorage
+          localStorage.setItem('userId', response.user.id.toString()); 
+        } else {
+          console.warn('El ID de usuario no se encontró en la respuesta');
+        }
+
         return response;
       })
     );
@@ -46,6 +53,39 @@ export class UserService {
 
     const token = localStorage.getItem('token');
     return !!token; 
+  }
+
+  // Obtener todos los usuarios
+  getUsers(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.apiUrl}/users`, { headers });
+  }
+
+  // Obtener un usuario por ID
+  getUserById(id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.apiUrl}/users/${id}`, { headers });
+  }
+
+  // registro usuario
+  registerUser(user: { email: string; name: string; lastName: string; password: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, user);
+  }
+
+  // actualizar usuario por ID
+  updateUser(id: number, user: { email?: string; name?: string; lastName?: string }): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.apiUrl}/users/${id}`, user, { headers });
+  }
+
+  // eliminar un usuario por ID
+   deleteUser(id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete(`${this.apiUrl}/users/${id}`, { headers });
   }
   
 }
