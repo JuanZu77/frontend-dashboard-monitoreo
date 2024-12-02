@@ -31,7 +31,9 @@
      <div class="login-right-content">
 
       <div class="title-right">
-          <h1>Portal de monitoreo</h1>
+        <h1 *ngIf="!isMobile">Portal de monitoreo</h1>
+        <div *ngIf="isMobile" class="rectangulo-gris"></div>
+        
           <h2>Iniciar Sesión</h2>
       </div>
 
@@ -49,21 +51,22 @@
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Contraseña</mat-label>
           <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" />
-          <button mat-icon-button matSuffix (click)="hide = !hide">
+          <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
             <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
           </button>
           <mat-error *ngIf="submitted && loginForm.get('password')?.hasError('minlength')">
             La contraseña debe tener al menos 8 caracteres.
           </mat-error>
         </mat-form-field>
+        
       
           <div class="buttons-form">
             <a href="#">¿Olvidaste tu contraseña?</a>
            
-            <button mat-raised-button color="primary" type="submit">
-              Iniciar sesión
-           
+            <button mat-raised-button color="primary" type="submit" [disabled]="isLoading">
+              {{ isMobile ? 'Registrarse' : 'Iniciar sesión' }}
             </button>
+            
           </div>
         </form>
 
@@ -76,6 +79,11 @@
       </div>
 
    </div>
+
+   <div *ngIf="isLoading" class="spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+  
 
  </div>
 

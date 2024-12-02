@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    API_BASE_URL: 'http://localhost:8080/api',
+    API_BASE_URL: 'https://springboot-monitoreoapp.rj.r.appspot.com/api',
 
   };
   
