@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,10 @@ export class LoginComponent implements OnInit {
   hide = true;
   errorMessage: string | null = null;
 
-  constructor(private userService: UserService, private router: Router) {}
+  isMobile: boolean = false;
+
+
+  constructor(private userService: UserService, private router: Router, @Inject(PLATFORM_ID) private platformId: any) {this.checkWindowSize();}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -47,6 +51,20 @@ export class LoginComponent implements OnInit {
         this.errorMessage = 'Correo o contraseña incorrectos';
       }
     });
+  }
+
+  /*escuchar los cambios de la ventana*/
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.checkWindowSize();
+    }
+  }
+
+  checkWindowSize() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.isMobile = window.innerWidth <= 768; 
+    }
   }
 
     

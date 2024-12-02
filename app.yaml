@@ -1,0 +1,21 @@
+runtime: python39
+
+handlers:
+  # Ruta para archivos estáticos (HTML, JS, CSS, imágenes, etc.)
+  - url: /assets
+    static_dir: dist/front-monitoreo/browser/assets
+
+  - url: /media
+    static_dir: dist/front-monitoreo/browser/media
+
+   - url: /.*
+    static_files: dist/front-monitoreo/browser/index.csr.html
+    upload: dist/front-monitoreo/browser/index.csr.html
+
+
+  # Manejo de archivos estáticos sin grupos en el patrón
+  - url: /(.*\.(js|css|html|ico|png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|eot|json))
+    static_files: dist/front-monitoreo/browser/\1
+    upload: dist/front-monitoreo/browser/.*\.(js|css|html|ico|png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|eot|json)
+
+
