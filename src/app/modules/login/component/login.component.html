@@ -63,7 +63,7 @@
           <div class="buttons-form">
             <a href="#">¿Olvidaste tu contraseña?</a>
            
-            <button mat-raised-button color="primary" type="submit">
+            <button mat-raised-button color="primary" type="submit" [disabled]="isLoading">
               {{ isMobile ? 'Registrarse' : 'Iniciar sesión' }}
             </button>
             
@@ -79,6 +79,11 @@
       </div>
 
    </div>
+
+   <div *ngIf="isLoading" class="spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+  
 
  </div>
 

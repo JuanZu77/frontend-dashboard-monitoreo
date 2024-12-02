@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string | null = null;
 
   isMobile: boolean = false;
+  isLoading: boolean = false;
 
 
   constructor(private userService: UserService, private router: Router, @Inject(PLATFORM_ID) private platformId: any) {this.checkWindowSize();}
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.errorMessage = null;
+    this.isLoading = true; 
 
     const email = this.loginForm.get('email')?.value;
     const password = this.loginForm.get('password')?.value;
@@ -44,11 +46,12 @@ export class LoginComponent implements OnInit {
       next:(response:any)=>{
         console.log('Inicio de sesión exitoso:', response);
         this.router.navigate(['/dashboard']);
-
+        this.isLoading = false;
       },
       error:(error:any)=>{
         console.error('Error en el inicio de sesión:', error);
         this.errorMessage = 'Correo o contraseña incorrectos';
+        this.isLoading = false;
       }
     });
   }

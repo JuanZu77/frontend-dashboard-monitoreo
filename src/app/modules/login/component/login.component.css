@@ -221,6 +221,25 @@ mat-form-field{
   --mdc-outlined-text-field-error-outline-color:#84818A !important; /*anulo border roojo*/
 }
 
+.spinner-container {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10; 
+}
+
+.spinner-container mat-spinner {
+  width: 50px; 
+  height: 50px;
+}
+
+
 
 /* RESPONSIVE */
 @media screen and (max-width: 1460px) {
