@@ -223,15 +223,11 @@ mat-form-field{
 
 .spinner-container {
   position: absolute; 
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3); 
+  /*background-color: rgba(0, 0, 0, 0.3); */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10; 
+  z-index: 4; 
 }
 
 .spinner-container mat-spinner {
@@ -298,7 +294,7 @@ mat-form-field{
 }
 
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
   .login-container {
     flex-direction: column; 
     align-items: center;
@@ -352,6 +348,10 @@ mat-form-field{
 
 /* MOBILE */
 @media screen and (max-width: 768px) {
+
+  .login-container{
+    margin: 0 4em;
+  }
   .login-left {
     display: none;
   }
@@ -362,6 +362,9 @@ mat-form-field{
 
   .login-right {
     width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
     box-shadow: none; 
     border-radius: 0; 
     padding: 1rem;
@@ -398,7 +401,6 @@ mat-form-field{
     height: auto;
     display: flex;
     flex-direction: column; 
-    align-items: center; 
     gap: 10px;
   }
   
@@ -406,16 +408,19 @@ mat-form-field{
     font-size: 14px;
     text-decoration: none;
     color: black;
-    margin-bottom: 20em;
+    margin-left: 2em;
+    margin-bottom: 15em;
   }
   
   .buttons-form button {
-    width: 90%; 
+    width: 80%; 
     height: 56px;
     border-radius: 20px;
     font-family: 'poppins';
     font-size: 14px;
     font-weight: 500;
+    margin-left: 2em;
+    margin-bottom: 5em;
   }
   
 }

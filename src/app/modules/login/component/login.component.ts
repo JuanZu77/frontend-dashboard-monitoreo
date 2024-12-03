@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string | null = null;
 
   isMobile: boolean = false;
+  showRectanguloGris: boolean = false;
   isLoading: boolean = false;
 
 
@@ -29,32 +30,59 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
+    this.submitted = true; // Marca el formulario como enviado
     this.errorMessage = null;
-    this.isLoading = true; 
-
-    const email = this.loginForm.get('email')?.value;
-    const password = this.loginForm.get('password')?.value;
-
-    if (!email || !password || this.loginForm.invalid) {
-      console.log('Formulario inválido');
+  
+    // referencias de control
+    const emailControl = this.loginForm.get('email');
+    const passwordControl = this.loginForm.get('password');
+  
+    // seteo los errores de campos vacíos
+    if (!emailControl?.value) {
+      emailControl?.setErrors({ required: true });
+    }
+    if (!passwordControl?.value) {
+      passwordControl?.setErrors({ required: true });
+    }
+  
+    // si es invalido detenemos
+    if (this.loginForm.invalid) {
+      console.log('Formulario inválido: revisar errores.');
       return;
     }
+  
+    // validaciones
+    if (emailControl?.hasError('email')) {
+      console.log('Formulario inválido: email inválido');
+      return;
+    }
+  
+    if (passwordControl?.hasError('minlength')) {
+      console.log('Formulario inválido: contraseña corta');
+      return;
+    }
+  
 
-    this.userService.login(email, password)
-    .subscribe({
-      next:(response:any)=>{
+    this.isLoading = true;
+  
+    const email = emailControl?.value;
+    const password = passwordControl?.value;
+  
+    this.userService.login(email, password).subscribe({
+      next: (response: any) => {
         console.log('Inicio de sesión exitoso:', response);
         this.router.navigate(['/dashboard']);
         this.isLoading = false;
       },
-      error:(error:any)=>{
+      error: (error: any) => {
         console.error('Error en el inicio de sesión:', error);
-        this.errorMessage = 'Correo o contraseña incorrectos';
+        this.errorMessage = 'Correo o contraseña incorrectos.';
         this.isLoading = false;
-      }
+      },
     });
   }
+ 
+  
 
   /*escuchar los cambios de la ventana*/
   @HostListener('window:resize', ['$event'])
@@ -66,9 +94,9 @@ export class LoginComponent implements OnInit {
 
   checkWindowSize() {
     if (isPlatformBrowser(this.platformId)) {
-      this.isMobile = window.innerWidth <= 768; 
+      const width = window.innerWidth;
+      this.isMobile = width <= 768; // Mobile: <=768px
     }
-  }
-
+}  
     
 }
