@@ -43,19 +43,29 @@
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" />
-          <mat-error *ngIf="submitted && loginForm.get('email')?.hasError('email')">
-            Ingrese un email válido.
+          <mat-error *ngIf="submitted && !loginForm.get('email')?.value">
+            Debe ingresar un email.
+          </mat-error>
+          <mat-error *ngIf="submitted && loginForm.get('email')?.value && loginForm.get('email')?.hasError('email')">
+            Email inválido. Debe ingresar un email válido.
           </mat-error>
         </mat-form-field>
       
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Contraseña</mat-label>
-          <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" />
+          <input
+            matInput
+            formControlName="password"
+            [type]="hide ? 'password' : 'text'"
+          />
           <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
             <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
           </button>
-          <mat-error *ngIf="submitted && loginForm.get('password')?.hasError('minlength')">
-            La contraseña debe tener al menos 8 caracteres.
+          <mat-error *ngIf="submitted && !loginForm.get('password')?.value">
+            Debe ingresar una contraseña.
+          </mat-error>
+          <mat-error *ngIf="submitted && loginForm.get('password')?.value && loginForm.get('password')?.hasError('minlength')">
+            Contraseña inválida. Longitud mínima: 8 caracteres.
           </mat-error>
         </mat-form-field>
         
@@ -64,7 +74,7 @@
             <a href="#">¿Olvidaste tu contraseña?</a>
            
             <button mat-raised-button color="primary" type="submit" [disabled]="isLoading">
-              {{ isMobile ? 'Registrarse' : 'Iniciar sesión' }}
+              {{ isMobile ? 'Ingresar' : 'Iniciar sesión' }}
             </button>
             
           </div>
