@@ -1,13 +1,14 @@
 .dashboard-container {
   display: flex;
-  width: 1440px;
-  height: 100vh;
-  margin: 0 auto;
-  box-sizing: border-box;
+  flex-direction: row; 
+  width: 100%;
+  height: auto; 
+  overflow: scroll; 
+  background-color: #eaf4f8;
 }
 
 .sidebar {
-  width: 80px;
+  width: 60px;
   background: #ffffff;
   display: flex;
   flex-direction: column;
@@ -38,8 +39,9 @@
 }
 
 .menu-content {
+  margin-left: 20px; 
+  margin-right: 20px;
   flex: 1;
-  background: #eaf4f8;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -52,6 +54,7 @@
   background: #ffffff;
   padding: 15px;
   border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 .navbar .user-info {
@@ -60,14 +63,16 @@
   gap: 15px;
 }
 
-.navbar .user-info span {
-  font-weight: bold;
+.menu-content  h1{
+  font-weight: 500;
 }
 
 .totals {
   display: flex;
   gap: 20px;
-  margin: 20px 0;
+  margin-bottom: 20px;
+  flex-wrap: nowrap; /* no debo permitir camboar el diseño de las filas */
+
 }
 
 .card {
@@ -167,4 +172,13 @@ margin-bottom: 20px;
 
 .indicator-card .indicator-values span {
   font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-container {
+    width: 1024px; 
+    min-width: 1024px; 
+    overflow-x: auto; 
+    overflow-y: auto; 
+  }
 }
