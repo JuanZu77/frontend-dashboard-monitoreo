@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './modules/login/login.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { RegisterComponent } from './modules/register/component/register.component';
+import { RegisterModule } from './modules/register/register.module';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/
     BrowserAnimationsModule,
     //HttpClientModule, deprecated tackoverflow.com/questions/78430636/httpclientmodule-is-deprecated-in-angular-18-whats-the-replacement
     LoginModule,
-    DashboardModule
+    DashboardModule,
+    RegisterModule
 
   ],
   providers: [
