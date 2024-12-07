@@ -44,8 +44,6 @@ export class UserService {
     localStorage.removeItem('token');
   }
 
-
-
   isAuthenticated(): boolean {
     if (typeof localStorage === 'undefined') {
       return false; 
@@ -79,6 +77,11 @@ export class UserService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.put(`${this.apiUrl}/users/${id}`, user, { headers });
+  }
+
+  //actualizar pass
+  updatePassword(id: number, passwordUpdate: { newPassword: string; confirmPassword: string }): Observable<any> {
+    return this.http.put(`${this.apiUrl}/users/${id}/update-password`, passwordUpdate);
   }
 
   // eliminar un usuario por ID

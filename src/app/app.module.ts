@@ -10,11 +10,13 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { RegisterComponent } from './modules/register/component/register.component';
 import { RegisterModule } from './modules/register/register.module';
+import { ForgotYourPasswordComponent } from './modules/forgot-your-password/component/forgot-your-password.component';
+import { ForgotYourPasswordModule } from './modules/forgot-your-password/forgot-your-password.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -24,8 +26,8 @@ import { RegisterModule } from './modules/register/register.module';
     //HttpClientModule, deprecated tackoverflow.com/questions/78430636/httpclientmodule-is-deprecated-in-angular-18-whats-the-replacement
     LoginModule,
     DashboardModule,
-    RegisterModule
-
+    RegisterModule,
+    ForgotYourPasswordModule
   ],
   providers: [
     provideHttpClient(withFetch()),
