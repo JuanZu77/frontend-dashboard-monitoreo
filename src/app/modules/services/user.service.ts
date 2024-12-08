@@ -79,6 +79,12 @@ export class UserService {
     return this.http.put(`${this.apiUrl}/users/${id}`, user, { headers });
   }
 
+  // buscar usuario ID
+  searchByEmail(email: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/users/find-by-email?email=${email}`);
+  }
+  
+  
   //actualizar pass
   updatePassword(id: number, passwordUpdate: { newPassword: string; confirmPassword: string }): Observable<any> {
     return this.http.put(`${this.apiUrl}/users/${id}/update-password`, passwordUpdate);
