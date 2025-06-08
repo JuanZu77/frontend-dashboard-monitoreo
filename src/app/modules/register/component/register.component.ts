@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { isPlatformBrowser } from '@angular/common';
+import { FloatLabelType } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-register',
@@ -14,9 +15,12 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   hide = true;
   errorMessage: string | null = null;
+
   isMobile: boolean = false;
   showRectanguloGris: boolean = false;
   isLoading: boolean = false;
+
+  floatLabel: FloatLabelType = 'auto';
 
   constructor(
     private userService: UserService,
@@ -25,6 +29,7 @@ export class RegisterComponent implements OnInit {
   ) {
     this.checkWindowSize();
   }
+  
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -113,7 +118,8 @@ export class RegisterComponent implements OnInit {
   checkWindowSize() {
     if (isPlatformBrowser(this.platformId)) {
       const width = window.innerWidth;
-      this.isMobile = width <= 768;
+      this.isMobile = width <= 768; //rectangulo o Portal de monitoreo
+      this.floatLabel = this.isMobile ? 'always' : 'auto'; // floatLabel según el tamaño
     }
   }
 }

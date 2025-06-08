@@ -32,7 +32,7 @@
 
       <div class="title-right">
         <h1 *ngIf="!isMobile">Portal de monitoreo</h1>
-        <div *ngIf="isMobile" class="rectangulo-gris"></div>
+        <div *ngIf="isMobile" class="square-gray"></div>
         
           <h2>Iniciar Sesión</h2>
       </div>
@@ -71,7 +71,7 @@
         
       
           <div class="buttons-form">
-            <a href="#">¿Olvidaste tu contraseña?</a>
+            <a routerLink="/forgot">¿Olvidaste tu contraseña?</a>
            
             <button mat-raised-button color="primary" type="submit" [disabled]="isLoading">
               {{ isMobile ? 'Ingresar' : 'Iniciar sesión' }}
@@ -86,12 +86,19 @@
             y 
          <a href="#">Condiciones.</a>
         </p>
+        
       </div>
-
+      
+      <mat-divider class="divider"></mat-divider>
+      <div class="button-link-register">
+        <button routerLink="/register">
+          Registrarse
+        </button>
+      </div>
    </div>
 
    <div *ngIf="isLoading" class="spinner-container">
-    <mat-spinner></mat-spinner>
+    <mat-spinner diameter="100" value="60" strokeWidth="10"></mat-spinner>
   </div>
   
 

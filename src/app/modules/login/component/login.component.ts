@@ -77,6 +77,7 @@ export class LoginComponent implements OnInit {
       error: (error: any) => {
         console.error('Error en el inicio de sesión:', error);
         this.errorMessage = 'Correo o contraseña incorrectos.';
+        alert("Correo o contraseña incorrectos")
         this.isLoading = false;
       },
     });

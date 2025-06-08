@@ -1,4 +1,4 @@
-.login-container {
+.register-container {
     display: flex;
     justify-content: center;
     align-items: stretch; 
@@ -6,12 +6,12 @@
     height: 900px;
     margin: 0 auto;
   }
-  .login-left-content, .login-right-content{
+  .register-left-content, .register-right-content{
     width: 70%;
   }
   
-  /*LOGIN LEFT*/
-  .login-left {
+  /*REGISTER LEFT*/
+  .register-left {
     position: relative; 
     width: 796px;
     display: flex;
@@ -25,7 +25,7 @@
     z-index: 1; 
   }
   
-  .login-left::before {
+  .register-left::before {
     content: ""; 
     position: absolute;
     top: 0;
@@ -38,7 +38,7 @@
     z-index: 2;
   }
   
-  .login-left::after {
+  .register-left::after {
     content: ""; 
     position: absolute;
     top: 0;
@@ -52,30 +52,30 @@
     z-index: 1; 
   }
   
-  .login-left-content {
+  .register-left-content {
     position: relative;
     z-index: 3; 
   }
-  .login-left-content h1{
+  .register-left-content h1{
     font-size: 48px;
     font-weight: 600;
     line-height: 58px;
     margin-bottom: 0;
   }
-  .login-left-content p{
+  .register-left-content p{
     margin-top: 0;
   }
   
-  .login-left-content ul li{
+  .register-left-content ul li{
     list-style-type: none;
     padding-bottom: 1em;
   }
-  .login-left-content ul {
+  .register-left-content ul {
     padding: 0;
     margin-top: 1.5rem;
   }
   
-  .login-left-content ul li {
+  .register-left-content ul li {
     list-style-type: none;
     display: flex;
     align-items: flex-start;
@@ -83,15 +83,15 @@
     margin-bottom: 1em;
   }
   
-  .login-left-content li img {
+  .register-left-content li img {
     width: 20px;
     height: 20px;
     display: inline-block;
     object-fit: contain; 
   }
   
-  /*LOGIN RIGHT*/
-  .login-right {
+  /*REGISTER RIGHT*/
+  .register-right {
     width: 675px;
     display: flex; 
     flex-direction: column; 
@@ -104,55 +104,50 @@
     border-radius: 30px 0px 0px 30px;
     z-index: 2;
   }
+
+  .title-right{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+  }
+  .square-gray {
+    width: 100px;
+    height: 90px;
+    margin-top: 20em;
+    background-color: #d9d9d9;
+  }
+  
+
   .title-right h1{
    font-size: 38.5px;
    font-weight: 600;
    margin-bottom: 0;
   }
-  .rectangulo-gris {
-    width: 100px;
-    height: 90px;
-    background-color: #d9d9d9;
-    margin: 20px auto;
-  }
-  
+
   .title-right h2{
     margin-top: 0;
     font-size: 25px;
     font-weight: 500;
   }
   
-  .captcha{
-    width: 393px;
-  }
-  .captcha p{
-    font-size: 12px;
-    font-weight: 400;
-  } 
-  .captcha a{
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 400;
-    color: #33A3AA;
-  }
-  
-  /*LOGIN*/
+  /*REGISTER*/
   mat-form-field{
     width: 100%;
     margin-bottom: 0.5em;
   }
   
-  .login-right-content{
+  .register-right-content{
     width: 393px;
   }
   
   .full-width input{
     width: 393px;
-    height: 38px;
+    height: 27px;
   }
   
   .full-width mat-label {
-    font-size: 20px;
+    font-size: 16px;
     color: #84818A;
     text-align: center;
   }
@@ -166,12 +161,12 @@
     width: 393px;
     height: 58px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items:center;
     } 
   
     .buttons-form button{
-      width: 164px;
+      width: 70%;
       height: 48px;
       border-radius: 12px;
       font-family:'poppins';
@@ -180,26 +175,61 @@
       background-color: #33A3AA;
       box-shadow: none;
     }
-  
-  .buttons-form a{
-      font-size: 14px;
+
+
+    .captcha{
+      width: 100%;
+    }
+    .captcha p{
+      font-size: 12px;
+      font-weight: 400;
+    } 
+    .captcha a{
       text-decoration: none;
-      color: black;
-  }
+      font-size: 12px;
+      font-weight: 400;
+      color: #33A3AA;
+    }
+    
+    .button-link-login{
+      width: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .button-link-login button{
+      margin-top: 3em;
+      margin-bottom: 3em;
+      background-color: transparent;
+      box-shadow: none;
+      border-style: none;
+      font-size: 12px;
+      font-weight: 400;
+      font-family: "poppins";
+    }
+    .button-link-login button:hover{
+     transform: scale(1.05);
+     cursor: pointer;
+    }
+    
+    .divider{
+      width: 100%;
+      margin-top: 2em;
+    }
+    
+  
   
   /* Modificadores mat-form-field*/
   :host ::ng-deep .mdc-text-field--outlined.mdc-text-field--focused .mdc-notched-outline {
-  
     border-color: #84818A !important; 
   }
-  
-  :host ::ng-deep .mdc-text-field--outlined {
-    
+  :host ::ng-deep .mdc-text-field--outlined { 
     --mdc-outlined-text-field-hover-outline-color:#84818A !important; 
   }
   :host ::ng-deep .mdc-text-field--outlined {
     --mdc-outlined-text-field-focus-outline-color:#84818A !important; 
-    
+    --mdc-outlined-text-field-focus-outline-width: 1px !important;
   }
   
   :host ::ng-deep .mdc-text-field--outlined .mdc-text-field__input {
@@ -209,53 +239,56 @@
   /*ERRORES*/
   :host ::ng-deep .mdc-text-field--outlined {
     --mdc-outlined-text-field-error-focus-outline-color:#84818A !important; 
-    
   }
   
   :host ::ng-deep .mdc-text-field--outlined {
     --mdc-outlined-text-field-error-hover-outline-color:#84818A !important; 
-    
+    --mdc-outlined-text-field-error-hover-outline-width: 1px !important;
   }
   
   :host ::ng-deep .mdc-text-field--outlined {
     --mdc-outlined-text-field-error-outline-color:#84818A !important; /*anulo border roojo*/
   }
   
-  .spinner-container {
-    position: absolute; 
-    /*background-color: rgba(0, 0, 0, 0.3); */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 4; 
-  }
-  
-  .spinner-container mat-spinner {
-    width: 50px; 
-    height: 50px;
-  }
-  
-  
+/**** SPINNER *****/
+.spinner-container {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8); 
+  z-index: 15;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:host ::ng-deep .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+  stroke-linecap: round; /*cambiar progreso*/
+}
+:host ::ng-deep .mat-mdc-progress-spinner.mat-primary{
+  --mdc-circular-progress-active-indicator-color: #84818A; /*color del spinner*/
+}
   
   /* RESPONSIVE */
   @media screen and (max-width: 1460px) {
-    .login-container {
+    .register-container {
       width: 90%; 
       transform: scale(0.95); 
       margin: 0 auto; 
     }
   
-    .login-left, .login-right {
+    .register-left, .register-right {
       padding: 1.5rem; 
     }
   
-    .login-right {
+    .register-right {
       width: 85%; 
       border-radius: 30px 0px 0px 30px;
     }
   
-    .login-right-content {
-      width: 100%; 
+    .register-right-content {
       transform: scale(0.95); 
     }
   
@@ -263,21 +296,14 @@
       font-size: 1rem; 
       margin: 1em auto;
     }
-  
-    .buttons-form {
-      width: 90%;
-      gap: 10px; 
-    }
-    
+
     .buttons-form button {
-      width: 90%; 
+      width: 50%; 
       height: 50px; 
+      justify-content: center;
+      align-items: center;
       font-size: 14px; 
       border-radius: 12px;
-    }
-  
-    .buttons-form a {
-      font-size: 13px; 
     }
   
     .captcha {
@@ -296,7 +322,13 @@
   
   
   @media screen and (min-width: 769px) and (max-width: 1024px) {
-    .login-container {
+   
+    .spinner-container{
+      width: 110%;
+      height: 100%;
+    }
+
+    .register-container {
       flex-direction: column; 
       align-items: center;
       width: 95%;
@@ -304,14 +336,14 @@
       margin: 0;
     }
   
-    .login-left{
+    .register-left{
       width: 100%; 
     }
-    .login-left, .login-right {
+    .register-left, .register-right {
       margin: 1rem auto; 
     }
   
-    .login-right {
+    .register-right {
       width: 100%; 
       margin-top: -40px;
       margin-left: 0;
@@ -320,7 +352,7 @@
       z-index: 2;
     }
   
-    .login-right-content {
+    .register-right-content {
       width: 100%; 
     }
   
@@ -340,7 +372,8 @@
       }
   
       .captcha{
-        width: 90%;
+        width: 100%;
+        justify-content: center;
         text-align: center;
         margin-top: 3em;
       }
@@ -350,10 +383,21 @@
   /* MOBILE */
   @media screen and (max-width: 768px) {
   
-    .login-container{
+    .register-container{
       margin: 0 4em;
     }
-    .login-left {
+
+    .mat-form-field .mat-label {
+      position: initial;
+    }
+
+    .spinner-container{
+      left: -2em;
+      width: 100%;
+      height: 100%;
+    }
+  
+    .register-left {
       display: none;
     }
   
@@ -361,7 +405,7 @@
       display: none;
     }
   
-    .login-right {
+    .register-right {
       width: 100%;
       flex-direction: column;
       justify-content: center;
@@ -371,7 +415,7 @@
       padding: 1rem;
     }
   
-    .login-right-content {
+    .register-right-content {
       width: 100%;
       margin: 0;
     }
@@ -394,7 +438,7 @@
   
     .full-width{
       width: 90%;
-      margin: 1.5em 0.5em 1.5em 0.5em;
+      margin: 0em 0.5em 1.5em 0.5em;
     }
   
     .buttons-form {
@@ -405,14 +449,6 @@
       gap: 10px;
     }
     
-    .buttons-form a {
-      font-size: 14px;
-      text-decoration: none;
-      color: black;
-      margin-left: 2em;
-      margin-bottom: 15em;
-    }
-    
     .buttons-form button {
       width: 80%; 
       height: 56px;
@@ -421,8 +457,8 @@
       font-size: 14px;
       font-weight: 500;
       margin-left: 2em;
+      margin-top: 6em;
       margin-bottom: 5em;
-    }
-    
+    }  
   }
   

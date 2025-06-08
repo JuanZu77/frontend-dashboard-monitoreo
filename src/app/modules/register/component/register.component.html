@@ -1,9 +1,9 @@
-<div class="login-container">
-    <!--LEFT LOGIN CONTAINER-->
-    <div class="login-left">
-      <div class="login-left-content">
+<div class="register-container">
+    <!--LEFT REGISTER CONTAINER-->
+    <div class="register-left">
+      <div class="register-left-content">
         <h1>Registro de Usuarios</h1>
-        <p>Nos alegra tenerte de vuelta y estamos listos para <br />atender tus necesidades. Inicia sesión y continúa <br />aprovechando al máximo nuestra plataforma.</p>
+       
         <ul class="custom-list">
           <li>
             <img src="assets/login/icon1.png" alt="" />
@@ -21,37 +21,37 @@
       </div>
     </div>
   
-    <!--RIGHT LOGIN CONTAINER-->
-    <div class="login-right">
-      <div class="login-right-content">
+    <!--RIGHT REGISTER CONTAINER-->
+    <div class="register-right">
+      <div class="register-right-content">
         <div class="title-right">
           <h1 *ngIf="!isMobile">Portal de monitoreo</h1>
-          <div *ngIf="isMobile" class="rectangulo-gris"></div>
+          <div *ngIf="isMobile" class="square-gray"></div>
           <h2>Registro</h2>
         </div>
   
-        <!--FORM LOGIN-->
+        <!--FORM REGISTER-->
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          <mat-form-field class="full-width" appearance="outline">
+          <mat-form-field class="full-width" appearance="outline" [floatLabel]="floatLabel">
             <mat-label>Email</mat-label>
             <input matInput formControlName="email" />
             <mat-error *ngIf="submitted && !registerForm.get('email')?.value">Debe ingresar un email.</mat-error>
             <mat-error *ngIf="submitted && registerForm.get('email')?.hasError('email')">Email inválido.</mat-error>
           </mat-form-field>
   
-          <mat-form-field class="full-width" appearance="outline">
+          <mat-form-field class="full-width" appearance="outline" [floatLabel]="floatLabel">
             <mat-label>Nombre</mat-label>
             <input matInput formControlName="firstName" />
             <mat-error *ngIf="submitted && !registerForm.get('firstName')?.value">Debe ingresar su nombre.</mat-error>
           </mat-form-field>
   
-          <mat-form-field class="full-width" appearance="outline">
+          <mat-form-field class="full-width" appearance="outline" [floatLabel]="floatLabel">
             <mat-label>Apellido</mat-label>
             <input matInput formControlName="lastName" />
             <mat-error *ngIf="submitted && !registerForm.get('lastName')?.value">Debe ingresar su apellido.</mat-error>
           </mat-form-field>
   
-          <mat-form-field class="full-width" appearance="outline">
+          <mat-form-field class="full-width" appearance="outline" [floatLabel]="floatLabel">
             <mat-label>Contraseña</mat-label>
             <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" />
             <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
@@ -61,7 +61,7 @@
             <mat-error *ngIf="submitted && registerForm.get('password')?.hasError('minlength')">Contraseña inválida.</mat-error>
           </mat-form-field>
   
-          <mat-form-field class="full-width" appearance="outline">
+          <mat-form-field class="full-width" appearance="outline" [floatLabel]="floatLabel">
             <mat-label>Confirmar Contraseña</mat-label>
             <input matInput formControlName="confirmPassword" [type]="hide ? 'password' : 'text'" />
             <mat-error *ngIf="submitted && !registerForm.get('confirmPassword')?.value">Debe confirmar la contraseña.</mat-error>
@@ -69,24 +69,31 @@
           </mat-form-field>
   
           <div class="buttons-form">
-            <a href="#">¿Olvidaste tu contraseña?</a>
             <button mat-raised-button color="primary" type="submit" [disabled]="isLoading">
-              {{ isMobile ? 'Registrar' : 'Crear cuenta' }}
+              {{ isMobile ? 'Registrarse' : 'Crear cuenta' }}
             </button>
           </div>
         </form>
   
-        <div class="captcha">
-          <p>
-            Protegido por reCAPTCHA y sujeto a la
-            <a href="#">Política de Privacidad</a> y
-            <a href="#">Condiciones.</a>
-          </p>
-        </div>
+          <div class="captcha">
+            <p>
+              Protegido por reCAPTCHA y sujeto a la
+              <a href="#">Política de Privacidad</a> y
+              <a href="#">Condiciones.</a>
+            </p>
+          </div>
+
+          <mat-divider class="divider"></mat-divider>
+          <div class="button-link-login">
+            <button routerLink="/login" [disabled]="isLoading">
+              {{ isMobile ? 'Ingresar' : 'Iniciar sesión' }}
+            </button>
+          </div>
+
       </div>
   
       <div *ngIf="isLoading" class="spinner-container">
-        <mat-spinner></mat-spinner>
+        <mat-spinner diameter="100" value="60" strokeWidth="10"></mat-spinner>
       </div>
     </div>
   </div>
