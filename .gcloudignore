@@ -1,0 +1,4 @@
+.gcloudignore
+!dist/
+!app.yaml
+/node_modules/

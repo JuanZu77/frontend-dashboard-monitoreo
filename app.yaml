@@ -1,0 +1,23 @@
+runtime: python39
+
+entrypoint: gunicorn -b :$PORT main:app
+
+handlers:
+
+# Manejo de archivos estáticos (js, css, etc.)
+  - url: /(.*\.(js|css|html|ico|png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|eot|json))
+    static_files: dist/browser/\1
+    upload: dist/browser/.*\.(js|css|html|ico|png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|eot|json)
+
+  # Archivos estáticos (HTML, JS, CSS, imágenes, etc.)
+  - url: /assets
+    static_dir: dist/browser/assets
+
+  - url: /media
+    static_dir: dist/browser/media
+
+  # Rutas del SPA (Angular) redirigen al index.html
+  - url: /static/(.*)
+    static_files: dist/browser/index.html
+    upload: dist/browser/index.html
+

@@ -1,0 +1,102 @@
+<div class="login-container">
+   
+  <!--LEFT LOGIN CONTAINER-->
+  <div class="login-left">
+
+      <div class="login-left-content">
+      
+      <h1>Iniciar sesión</h1>
+
+      <p>Nos alegra tenerte de vuelta y estamos listos para <br>atender tus necesidades. Inicia sesión y continúa <br> aprovechando al máximo nuestra plataforma.</p>
+        <ul class="custom-list">
+          <li> 
+            <img src="assets/login/icon1.png" alt="">
+            Monitoreo integral
+            <br>
+            Administra, monitorea múltiples plantas de forma centralizada.</li>
+
+          <li>
+           <img src="assets/login/icon2.png" alt="">
+            Notificaciones en tiempo real
+            <br>
+            Recibe notificaciones sobre las mediciones.</li>
+        </ul>
+    </div>
+
+    </div>
+
+  <!--RIGHT LOGIN CONTAINER-->
+    <div class="login-right">
+     
+     <div class="login-right-content">
+
+      <div class="title-right">
+        <h1 *ngIf="!isMobile">Portal de monitoreo</h1>
+        <div *ngIf="isMobile" class="rectangulo-gris"></div>
+        
+          <h2>Iniciar Sesión</h2>
+      </div>
+
+
+      <!--FORM LOGIN-->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" />
+          <mat-error *ngIf="submitted && !loginForm.get('email')?.value">
+            Debe ingresar un email.
+          </mat-error>
+          <mat-error *ngIf="submitted && loginForm.get('email')?.value && loginForm.get('email')?.hasError('email')">
+            Email inválido. Debe ingresar un email válido.
+          </mat-error>
+        </mat-form-field>
+      
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            formControlName="password"
+            [type]="hide ? 'password' : 'text'"
+          />
+          <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="submitted && !loginForm.get('password')?.value">
+            Debe ingresar una contraseña.
+          </mat-error>
+          <mat-error *ngIf="submitted && loginForm.get('password')?.value && loginForm.get('password')?.hasError('minlength')">
+            Contraseña inválida. Longitud mínima: 8 caracteres.
+          </mat-error>
+        </mat-form-field>
+        
+      
+          <div class="buttons-form">
+            <a href="#">¿Olvidaste tu contraseña?</a>
+           
+            <button mat-raised-button color="primary" type="submit" [disabled]="isLoading">
+              {{ isMobile ? 'Ingresar' : 'Iniciar sesión' }}
+            </button>
+            
+          </div>
+        </form>
+
+      <div class="captcha">
+        <p>Protegido por reCAPTCHA y sujeto a la 
+          <a href="#">Política de Privacidad</a>
+            y 
+         <a href="#">Condiciones.</a>
+        </p>
+      </div>
+
+   </div>
+
+   <div *ngIf="isLoading" class="spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+  
+
+ </div>
+
+
+ 
+  

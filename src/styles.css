@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* style.css */
+html, body { 
+  height: 100%;
+  min-width: 390px;  /*min width permitido*/
+  overflow-x: hidden;
+}
+body { 
+  font-family: 'Poppins', sans-serif;
+  overflow-x: auto; 
+}
+
+
+ 

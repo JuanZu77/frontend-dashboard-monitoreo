@@ -1,0 +1,184 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: row; 
+  width: 100%;
+  height: auto; 
+  overflow: scroll; 
+  background-color: #eaf4f8;
+}
+
+.sidebar {
+  width: 60px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.sidebar .logo {
+  margin-bottom: 75px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.sidebar .menu {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+
+.sidebar .menu mat-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.sidebar .menu .videocam-color {
+  color:#C1C1C1
+}
+
+.menu-content {
+  margin-left: 20px; 
+  margin-right: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.navbar .user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.menu-content  h1{
+  font-weight: 500;
+}
+
+.totals {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: nowrap; /* no debo permitir camboar el diseño de las filas */
+
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  flex: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-left h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.card-left p {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.card-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-right .icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-right .icon-circle mat-icon {
+  font-size: 28px;
+}
+
+.plants-table{
+background: #ffffff;
+border-radius: 8px;
+margin-bottom: 20px;
+}
+
+.plants-table .table-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.table-header h2{
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 30px;
+}
+.table-header button{
+  
+  background-color: transparent;
+  color: black;
+  font-family: "poppins";
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: none;
+  border: 1px solid #B0CAD1;
+  margin-left: 25px;
+}
+
+.indicators {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.indicator-card {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.indicator-card .indicator-values {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.indicator-card .indicator-values span {
+  font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-container {
+    width: 1024px; 
+    min-width: 1024px; 
+    overflow-x: auto; 
+    overflow-y: auto; 
+  }
+}
