@@ -11,6 +11,9 @@ RUN npm run build -- --configuration production
 
 WORKDIR /app/dist/browser
 
+# Renombrar si no existe index.html pero sí index.csr.html
+RUN mv index.csr.html index.html
+
 RUN npm install -g serve
 
 EXPOSE 8080
