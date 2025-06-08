@@ -1,6 +1,4 @@
 export const environment = {
-    production: false,
-    API_BASE_URL: 'https://springboot-monitoreoapp.rj.r.appspot.com/api',
-
-  };
-  
+  production: true,
+  API_BASE_URL: 'https://backend-monitoreo-1034554845915.europe-west1.run.app/api',
+};
