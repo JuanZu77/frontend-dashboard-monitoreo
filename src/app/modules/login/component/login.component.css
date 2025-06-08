@@ -122,19 +122,6 @@
   font-weight: 500;
 }
 
-.captcha{
-  width: 393px;
-}
-.captcha p{
-  font-size: 12px;
-  font-weight: 400;
-} 
-.captcha a{
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 400;
-  color: #33A3AA;
-}
 
 /*LOGIN*/
 mat-form-field{
@@ -146,13 +133,27 @@ mat-form-field{
   width: 393px;
 }
 
+.title-right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ }
+ .square-gray {
+   width: 100px;
+   height: 90px;
+   margin-top: 20em;
+   background-color: #d9d9d9;
+ }
+ 
+
 .full-width input{
   width: 393px;
-  height: 38px;
+  height: 30px;
 }
 
 .full-width mat-label {
-  font-size: 20px;
+  font-size: 16px;
   color: #84818A;
   text-align: center;
 }
@@ -187,19 +188,59 @@ mat-form-field{
     color: black;
 }
 
+.captcha{
+  width: 100%;
+}
+.captcha p{
+  font-size: 12px;
+  font-weight: 400;
+} 
+.captcha a{
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 400;
+  color: #33A3AA;
+}
+
+.button-link-register{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-link-register button{
+  margin-top: 3em;
+  margin-bottom: 3em;
+  background-color: transparent;
+  box-shadow: none;
+  border-style: none;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: "poppins";
+}
+.button-link-register button:hover{
+ transform: scale(1.05);
+ cursor: pointer;
+}
+
+.divider{
+  width: 100%;
+  margin-top: 2em;
+}
+
 /* Modificadores mat-form-field*/
 :host ::ng-deep .mdc-text-field--outlined.mdc-text-field--focused .mdc-notched-outline {
 
   border-color: #84818A !important; 
 }
-
 :host ::ng-deep .mdc-text-field--outlined {
   
-  --mdc-outlined-text-field-hover-outline-color:#84818A !important; 
+  --mdc-outlined-text-field-hover-outline-color:#8a8281 !important; 
 }
 :host ::ng-deep .mdc-text-field--outlined {
-  --mdc-outlined-text-field-focus-outline-color:#84818A !important; 
-  
+  --mdc-outlined-text-field-focus-outline-color: #8a8281 !important; 
+  --mdc-outlined-text-field-focus-outline-width: 1px !important;
 }
 
 :host ::ng-deep .mdc-text-field--outlined .mdc-text-field__input {
@@ -209,35 +250,41 @@ mat-form-field{
 /*ERRORES*/
 :host ::ng-deep .mdc-text-field--outlined {
   --mdc-outlined-text-field-error-focus-outline-color:#84818A !important; 
-  
 }
 
 :host ::ng-deep .mdc-text-field--outlined {
   --mdc-outlined-text-field-error-hover-outline-color:#84818A !important; 
-  
+  --mdc-outlined-text-field-error-hover-outline-width: 1px !important;
 }
 
 :host ::ng-deep .mdc-text-field--outlined {
   --mdc-outlined-text-field-error-outline-color:#84818A !important; /*anulo border roojo*/
 }
 
+
+/**** SPINNER *****/
 .spinner-container {
-  position: absolute; 
-  /*background-color: rgba(0, 0, 0, 0.3); */
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8); 
+  z-index: 15;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 4; 
 }
 
-.spinner-container mat-spinner {
-  width: 50px; 
-  height: 50px;
+:host ::ng-deep .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+  stroke-linecap: round; /*cambiar progreso*/
+}
+:host ::ng-deep .mat-mdc-progress-spinner.mat-primary{
+  --mdc-circular-progress-active-indicator-color: #84818A; /*color del spinner*/
 }
 
 
-
-/* RESPONSIVE */
+/**** RESPONSIVE *******/
 @media screen and (max-width: 1460px) {
   .login-container {
     width: 90%; 
@@ -265,11 +312,12 @@ mat-form-field{
 
   .buttons-form {
     width: 90%;
+    justify-content:space-around;
     gap: 10px; 
   }
   
   .buttons-form button {
-    width: 90%; 
+    width: 40%; 
     height: 50px; 
     font-size: 14px; 
     border-radius: 12px;
@@ -295,6 +343,11 @@ mat-form-field{
 
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
+  .spinner-container{
+    width: 110%;
+    height: 100%;
+  }
+
   .login-container {
     flex-direction: column; 
     align-items: center;
@@ -343,20 +396,30 @@ mat-form-field{
       text-align: center;
       margin-top: 3em;
     }
-  
-}
+  }
+
 
 /* MOBILE */
 @media screen and (max-width: 768px) {
-
+  
   .login-container{
     margin: 0 4em;
   }
+
+  .spinner-container{
+    left: -2em;
+    width: 100%;
+    height: 100%;
+  }
+
   .login-left {
     display: none;
   }
 
   .captcha{
+    width: 90%;
+  }
+  .captcha p, .captcha a{
     display: none;
   }
 
@@ -422,5 +485,10 @@ mat-form-field{
     margin-left: 2em;
     margin-bottom: 5em;
   }
-  
+
+  .button-link-register{
+    width: 90%;
+  }
+
 }
+
